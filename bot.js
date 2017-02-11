@@ -6,9 +6,9 @@ function commandIs(str, msg){
 	return msg.content.toLowerCase().startsWith("!" + str);
 }
 
-function status(callback) {
+function status(callback, ip) {
 	var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'https://mcapi.us/server/status?ip=46.9.14.223', true);
+    ourRequest.open('GET', 'https://mcapi.us/server/status?ip='+ip, true);
       ourRequest.onload = () => {
 		var ourData = JSON.parse(ourRequest.responseText);
 		callback(null, checkStatus(ourData));
@@ -33,27 +33,23 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	var args = message.content.split(/[ ]+/);
-	var sup = "default";
 	if(commandIs("hello", message)){
 		message.reply('Hello there');
 	}
-	if(commandIs("youtube", message)){
-		if(args.length === 1){
-			message.channel.sendMessage('You did not define an argument variable. Usage: `!youtube [episode number]`');
-		} else if (args.length === 2){
-			message.channel.sendMessage('Hello Youtube, this is episode ' + args[1]);
-		} else {
-			message.channel.sendMessage('You defined too many arguments. Usage: `!youtube [episode number]`');
-		}
-	}
 	if(commandIs("status", message)){
-		status((error, result) => {
-  			if (error) {
-    			message.channel.sendMessage("error!");
-    			return;
-  			}
-  		message.channel.sendMessage(result);
-		});
+		if(args.length === 1){
+			message.channel.sendMessage('You did not define an argument variable. Usage: `!status [ip]`');
+		} else if (args.length === 2){
+			status((error, result) => {
+				if (error) {
+					message.channel.sendMessage("error!");
+					return;
+				}
+			message.channel.sendMessage(result);
+		}, args[1]);
+		} else {
+			message.channel.sendMessage('You defined too many arguments. Usage: `!status [ip]`');
+		}
 	}
 });
 
