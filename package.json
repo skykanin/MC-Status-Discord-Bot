@@ -1,11 +1,19 @@
 {
   "name": "helper-bot",
   "version": "1.0.0",
-  "description": "idk man",
-  "main": "index.js",
+  "description": "Basic minecraft server status bot",
+  "main": "bot.js",
   "scripts": {
+    "start": "node bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "skykanin",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "xmlhttprequest": "^1.8.0"
+  }
 }
