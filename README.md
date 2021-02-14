@@ -3,10 +3,16 @@
 This discord bot is designed to check status of MC servers. It is a really basic bot with few commands, maybe I will impliment more
 commands later.
 
-## Using the bot
+## Running the bot
 
+To run this bot you will need to install [Node](https://nodejs.org/en/).
 If you want to use this bot for your personal server you need to provide the token in the `key.json` file. Follow the
-format in the `exampleKey.json` file. Then simply run the bot by running `npm install` followed with the running the bat file or `npm start`.
+format in the `exampleKey.json` file. Then simply run the bot by running `npm install` followed by running the bat file or running `npm start`.
+
+## Adding the bot to your discord server
+
+To add this bot to your personal discord server use this link
+https://discord.com/oauth2/authorize?client_id=279949626767835137&permissions=1133584&scope=bot
 
 ## Commands
 
